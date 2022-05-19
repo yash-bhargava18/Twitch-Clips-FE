@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Opening Links in an iFrame</title>
+	<style>
+		iframe {
+			width: 100%;
+			height: 500px;
+		}
+		button {display: inline-block;}
+	</style>
+    
+</head>
+<body onload="newClip()">
+
+ <script>
+	 var count = 0
+	 var clips = []
+
+	function GetRequest()
+	{
+		return ["https://clips.twitch.tv/embed?clip=IcySparklyPieBCWarrior-uc8jRlxGER684i-2&parent=localhost",
+				"https://clips.twitch.tv/embed?clip=IgnorantSourBulgogiKappa-aOypuRSQhb1da0MW&parent=localhost"]
+	}
+   
+	function newClip() {
+
+		if(clips < 1)
+		{
+			clips = GetRequest()
+		}
+			document.getElementById('myIframe').src = clips.pop();
+		}
+</script>
+    
+<iframe id="myIframe" src="temp"></iframe>
+<input type="button" value="Next Clip" onClick="newClip()" />
+
+
+</body></html>
