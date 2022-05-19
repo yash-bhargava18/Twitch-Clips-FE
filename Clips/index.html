@@ -20,7 +20,8 @@
 	{
 		return ["https://clips.twitch.tv/embed?clip=IcySparklyPieBCWarrior-uc8jRlxGER684i-2",
 				"https://clips.twitch.tv/embed?clip=IgnorantSourBulgogiKappa-aOypuRSQhb1da0MW",
-				"https://clips.twitch.tv/embed?clip=StormyTentativeGooseNerfBlueBlaster-fz6AoxMLgYa1bK4K"]
+				"https://clips.twitch.tv/embed?clip=StormyTentativeGooseNerfBlueBlaster-fz6AoxMLgYa1bK4K",
+				"https://clips.twitch.tv/embed?clip=SingleDrabTigerKAPOW-psNF6qOiQWIFMvC9"]
 	}
    
 	function newClip() {
@@ -29,7 +30,7 @@
 		{
 			clips = GetRequest()
 		}
-		document.getElementById('myIframe').src = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
+		document.getElementById('myIframe').src = clips.shift()+"&parent=localhost&autoplay=true&muted=false";
 	}
 </script>
     
