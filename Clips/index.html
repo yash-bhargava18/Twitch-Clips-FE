@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Opening Links in an iFrame</title>
+    <title>Clips Page</title>
 	<style>
 		iframe {
 			width: 100%;
@@ -14,27 +14,27 @@
 <body onload="newClip()">
 
  <script>
-	 var count = 0
 	 var clips = []
 
 	function GetRequest()
 	{
-		return ["https://clips.twitch.tv/embed?clip=IcySparklyPieBCWarrior-uc8jRlxGER684i-2&parent=localhost",
-				"https://clips.twitch.tv/embed?clip=IgnorantSourBulgogiKappa-aOypuRSQhb1da0MW&parent=localhost"]
+		return ["https://clips.twitch.tv/embed?clip=IcySparklyPieBCWarrior-uc8jRlxGER684i-2",
+				"https://clips.twitch.tv/embed?clip=IgnorantSourBulgogiKappa-aOypuRSQhb1da0MW",
+				"https://clips.twitch.tv/embed?clip=StormyTentativeGooseNerfBlueBlaster-fz6AoxMLgYa1bK4K"]
 	}
    
 	function newClip() {
 
-		if(clips < 1)
+		if(clips.length < 1)
 		{
 			clips = GetRequest()
 		}
-			document.getElementById('myIframe').src = clips.pop();
-		}
+		document.getElementById('myIframe').src = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
+	}
 </script>
     
-<iframe id="myIframe" src="temp"></iframe>
-<input type="button" value="Next Clip" onClick="newClip()" />
+<iframe id="myIframe" src="temp" allow='autoplay'></iframe >
+<input type="button" value="Next Clip" onClick="newClip() " />
 
 
 </body></html>
