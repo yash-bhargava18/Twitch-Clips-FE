@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Selections Page</h2>
+
+
+
+
+<script>
+    function getList()
+    {   
+        let list = ["Valorant", "CSGO", "League", "Apex"]
+        return list
+    }
+
+    let list = getList()
+    for(let i = 0; i < list.length; i+=1)
+    {
+        document.write(`<p>`)
+        document.write(`<input type="checkbox" name="category" value=${list[i]} id=${list[i]}>` )
+        document.write(`<label for=${list[i]}>${list[i]}</label>`)
+        document.write(`</p>`)
+    }
+
+</script>
+
+
+<p>
+    <button id="btn">Show Selected Value</button>
+</p>
+
+
+<script>
+    function postRequest(values)
+    {
+        alert(values);
+    }
+
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', (event) => {
+        let checkboxes = document.querySelectorAll('input[name="category"]:checked');
+        let values = [];
+        checkboxes.forEach((checkbox) => {
+            values.push(checkbox.value);
+        });
+        postRequest(values);
+        
+    });    
+</script>
+
+
+</body>
+</html>
