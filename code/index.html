@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Clips Page</title>
+	<link rel= "stylesheet" href="style.css">
+    
+</head>
+<body onload="newClip()">
+<script>
+	 var clips = []
+
+	function GetRequest()
+	{
+		return ["https://clips.twitch.tv/embed?clip=IcySparklyPieBCWarrior-uc8jRlxGER684i-2",
+				"https://clips.twitch.tv/embed?clip=IgnorantSourBulgogiKappa-aOypuRSQhb1da0MW",
+				"https://clips.twitch.tv/embed?clip=StormyTentativeGooseNerfBlueBlaster-fz6AoxMLgYa1bK4K"]
+	}
+   
+	function newClip() {
+
+		if(clips.length < 1)
+		{
+			clips = GetRequest()
+		}
+		document.getElementById('myIframe').src = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
+	}
+</script>
+
+<iframe id="myIframe" src="temp" allow='autoplay'></iframe >
+	<div class="mybuttons">
+<button id="b1" value="Next Clip" onClick="newClip()">Next Clip</button>
+<button id="b2" href="#" value="Logout">Logout</button>
+</div>
+
+</body>
+</html>
