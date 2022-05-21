@@ -8,5 +8,4 @@ signUpButton.addEventListener('click', () => {
 
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
-	window.location.replace("selection.html");
 });
