@@ -1,36 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <title>Clips Page</title>
-	<link rel= "stylesheet" href="src/css/style.css">
-    
+  <meta charset="UTF-8">
+  <title>Twitch Clip - trial</title>
+  <link rel="icon" type="image/png" href="src/images/favicon.png">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="src/css/style.css">
+
 </head>
-<body onload="newClip()">
-<script>
-	 var clips = []
-
-	function GetRequest()
-	{
-		return ["https://clips.twitch.tv/embed?clip=IcySparklyPieBCWarrior-uc8jRlxGER684i-2",
-				"https://clips.twitch.tv/embed?clip=IgnorantSourBulgogiKappa-aOypuRSQhb1da0MW",
-				"https://clips.twitch.tv/embed?clip=StormyTentativeGooseNerfBlueBlaster-fz6AoxMLgYa1bK4K"]
-	}
-   
-	function newClip() {
-
-		if(clips.length < 1)
-		{
-			clips = GetRequest()
-		}
-		document.getElementById('myIframe').src = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
-	}
-</script>
-
-<iframe id="myIframe" src="" allow='autoplay'></iframe >
-	<div class="mybuttons">
-<button id="b1" value="Next Clip" onClick="newClip()">Next Clip</button>
-<button id="b2" href="#" value="Logout">Logout</button>
+<body>
+<!-- partial:index.partial.html -->
+<h2>Twitch Clips - trial</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<span>Use your email for registration</span>
+			<input type="text" placeholder="Name" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<button>Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<button>Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>If you already have an account, please use your account to log in.</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello!</h1>
+				<p>Thank you for using our website.If you dont have an account with us, please enter your personal details to create an account to start using our services.</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
 </div>
+
+<!-- partial -->
+  <script  src="src/js/script.js"></script>
 
 </body>
 </html>
