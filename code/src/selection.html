@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Tag Selection</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+        crossorigin="anonymous"><link rel="stylesheet" href="css/style_selection.css">
+
+</head>
+<body>
+
+
+
+<script>
+    function getList()
+    {   
+        let list = ["Valorant", "CSGO", "League of Legends", "Minecraft", "Apex Legends", "Call of Duty WarZone", "Among Us", "Dota 2", "World of Warcraft" ]
+        return list
+    }
+
+    let list = getList()
+    document.write(`<div class="container"> <form action = "#"> <ul class="ks-cboxtags">`)
+    for(let i = 0; i < list.length; i+=1)
+    {
+        document.write(`<li>`)
+        document.write(`<input type="checkbox" name="category" value=${list[i]} id=${list[i]}>` )
+        document.write(`<label for=${list[i]}>${list[i]}</label>`)
+        document.write(`</li>`)
+    }
+    document.write(`<div class="container-name"><a class="example_b" id="btn"<span>Next</span></a></div>`)
+    document.write(`</ul> </form> </div>`)
+</script>
+
+
+<script>
+    function postRequest(values)
+    {
+        alert("Send Post with: " + values);
+        window.location.href = 'clips.html'
+    }
+
+    const btn = document.querySelector('#btn');
+    btn.addEventListener('click', (event) => {
+        let checkboxes = document.querySelectorAll('input[name="category"]:checked');
+        let values = [];
+        checkboxes.forEach((checkbox) => {
+            values.push(checkbox.value);
+        });
+        postRequest(values);
+        
+    });    
+</script>
+
+
+</body>
+</html>
