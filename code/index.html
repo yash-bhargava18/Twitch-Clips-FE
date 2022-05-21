@@ -5,7 +5,7 @@
   <title>Twitch Clip - trial</title>
   <link rel="icon" type="image/png" href="src/images/favicon.png">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'><link rel="stylesheet" href="src/css/style.css">
-
+  <script  src="src/js/script.js"> </script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -18,7 +18,7 @@
 			<input type="text" placeholder="Name" />
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" />
-			<button>Sign Up</button>
+			<button onClick="signUp()">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -26,7 +26,7 @@
 			<h1>Sign in</h1>
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Password" />
-			<button>Sign In</button>
+			<button onClick="signIn()">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -34,19 +34,33 @@
 			<div class="overlay-panel overlay-left">
 				<h1>Welcome Back!</h1>
 				<p>If you already have an account, please use your account to log in.</p>
-				<button class="ghost" id="signIn">Sign In</button>
+				<button class="ghost" id="signIn" >Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
 				<h1>Hello!</h1>
 				<p>Thank you for using our website.If you dont have an account with us, please enter your personal details to create an account to start using our services.</p>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<button class="ghost" id="signUp" >Sign Up</button>
 			</div>
 		</div>
 	</div>
 </div>
 
+<script>
+	function signIn(){
+
+		//alert("Ran")
+		window.location.href = 'selection.html'
+	}
+
+	function signUp(){
+
+		//alert("selection.html")
+		window.location.href = 'selection.html'
+	}
+</script>
+
 <!-- partial -->
-  <script  src="src/js/script.js"></script>
+<script  src="src/js/script.js"> </script>
 
 </body>
 </html>
