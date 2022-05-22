@@ -1,0 +1,12 @@
+I think the issue with sign in page being clicked 2 times is with the script routing in the index.html. To demonstrate, I have created a nodeJS server file which works with the login page on a single click. You can reroute the pages by specifying the path in the server.js file. Just replace your index file with mine.
+
+Steps to install in your system.
+
+1.Place the server file in your code folder.
+2.Open terminal in the code folder, run the following command
+		npm i express body-parser 
+3.After execution of the above command, run the following command
+		npm i nodemon -g
+4.Run the file by using the following command.
+		nodemon server.js
+
