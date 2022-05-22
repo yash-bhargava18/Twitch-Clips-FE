@@ -5,9 +5,10 @@
   <title>Tag Selection</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous"><link rel="stylesheet" href="css/style_selection.css">
-
+        
 </head>
 <body>
+
 
 
 
@@ -35,8 +36,25 @@
 <script>
     function postRequest(values)
     {
-        alert("Send Post with: " + values);
-        window.open('clips.html')
+        data = {"values":values}
+        fetch('http://127.0.0.1:5000/query', {
+		method: 'POST', // or 'PUT'
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+		}).then(response => response.json())
+		.then(response =>{
+            alert(JSON.stringify(response))
+			window.location = "clips.html"
+			
+			//return JSON.stringify(response)
+			
+		})
+		.catch(error => {
+			// handle the error
+		});
+
     }
 
     const btn = document.querySelector('#btn');
@@ -50,7 +68,18 @@
         
     });    
 </script>
-<a hidden href="clips.html"></a>
+<script> 
+
+</script>
+
+<script>
+    document.write(`<p>${sessionStorage.getItem("token")}</p>`)
+    
+</script>
+
+<button type="button" onclick="myFunction()">Click Me</button>
+<script src="https://www.w3schools.com/js/myScript.js"></script>
+
 
 </body>
 </html>

@@ -11,9 +11,26 @@
 
 	function GetRequest()
 	{
-		return ["https://clips.twitch.tv/embed?clip=IcySparklyPieBCWarrior-uc8jRlxGER684i-2",
-				"https://clips.twitch.tv/embed?clip=IgnorantSourBulgogiKappa-aOypuRSQhb1da0MW",
-				"https://clips.twitch.tv/embed?clip=StormyTentativeGooseNerfBlueBlaster-fz6AoxMLgYa1bK4K"]
+		let res;
+		data = {"values":values}
+        fetch('http://127.0.0.1:5000/query', {
+		method: 'GET', // or 'PUT'
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+		}).then(response => response.json())
+		.then(response =>{
+            alert(JSON.stringify(response))
+			res = response["inks"]
+			
+			
+		})
+		.catch(error => {
+			// handle the error
+		});
+		
+		return res
 	}
    
 	function newClip() {
