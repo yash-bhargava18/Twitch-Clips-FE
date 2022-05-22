@@ -8,29 +8,6 @@
 <body onload="newClip()">
 <script>
 	//var clips;
-	function GetRequest()
-	{	
-		//alert("here")
-		data = {"values":"values"}
-        fetch('http://127.0.0.1:5000/querytwo', {
-		method: 'POST', // or 'PUT'
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: data,
-		}).then(response => response.json())
-		.then(response =>{
-            
-			alert(JSON.stringify(response))
-			/* clips = JSON.stringify(response) */
-			
-		})
-		.catch(error => {
-			// handle the error
-		});
-		
-	}
-
 	function logOut(){
 		sessionStorage.clear()
 		window.location = "/"
