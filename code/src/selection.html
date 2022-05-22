@@ -45,8 +45,9 @@
 		body: JSON.stringify(data),
 		}).then(response => response.json())
 		.then(response =>{
+            
+			window.location = "clip.html"
             alert(JSON.stringify(response))
-			window.location = "clips.html"
 			
 			//return JSON.stringify(response)
 			
