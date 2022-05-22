@@ -47,8 +47,9 @@
 		.then(response =>{
             
 			window.location = "clip.html"
-            alert(JSON.stringify(response))
-			
+            sessionStorage.setItem("clips", `${response["links"]}`)
+            alert(response["links"])
+            
 			//return JSON.stringify(response)
 			
 		})
@@ -77,10 +78,7 @@
     document.write(`<p>${sessionStorage.getItem("token")}</p>`)
     
 </script>
-
-<button type="button" onclick="myFunction()">Click Me</button>
-<script src="https://www.w3schools.com/js/myScript.js"></script>
-
+<a href="clip.html"></a>
 
 </body>
 </html>

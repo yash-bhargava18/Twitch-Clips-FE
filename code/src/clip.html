@@ -7,47 +7,79 @@
 </head>
 <body onload="newClip()">
 <script>
-	 var clips = []
-
+	//var clips;
 	function GetRequest()
-	{
-		let res;
-		data = {"values":values}
-        fetch('http://127.0.0.1:5000/query', {
-		method: 'GET', // or 'PUT'
+	{	
+		//alert("here")
+		data = {"values":"values"}
+        fetch('http://127.0.0.1:5000/querytwo', {
+		method: 'POST', // or 'PUT'
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		body: JSON.stringify(data),
+		body: data,
 		}).then(response => response.json())
 		.then(response =>{
-            alert(JSON.stringify(response))
-			res = response["links"]
-			
+            
+			alert(JSON.stringify(response))
+			/* clips = JSON.stringify(response) */
 			
 		})
 		.catch(error => {
 			// handle the error
 		});
 		
-		return res
+	}
+
+	function logOut(){
+		sessionStorage.clear()
+		window.location = "/"
 	}
    
 	function newClip() {
-
-		if(clips.length < 1)
+		//alert(sessionStorage.getItem("clips"))
+		let clips = sessionStorage.getItem("clips").split(",");
+		if(clips == "")
 		{
-			clips = GetRequest()
+			//alert("here")
+			data = {"values":"000000"}
+			fetch('http://127.0.0.1:5000/query', {
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+			}).then(response => response.json())
+			.then(response =>{
+				
+				clips = response["links"].split(",")
+				let new_clip = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
+				document.getElementById('myIframe').src = new_clip;
+				sessionStorage.setItem("clips", clips.join(","))
+			})
+			.catch(error => {
+				// handle the error
+			});
 		}
-		document.getElementById('myIframe').src = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
+		else{
+			let new_clip = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
+			document.getElementById('myIframe').src = new_clip;
+			sessionStorage.setItem("clips", clips.join(","))
+		}
+
+		
 	}
 </script>
 
 <iframe id="myIframe" src="" allow='autoplay'></iframe >
 	<div class="mybuttons">
 <button id="b1" value="Next Clip" onClick="newClip()">Next Clip</button>
-<button id="b2" href="#" value="Logout">Logout</button>
+<button id="b2" href="#" value="Logout" onclick="logOut()">Logout</button>
 </div>
+
+<a href="https://clips.twitch.tv"></a>
+
+
 
 </body>
 </html>
