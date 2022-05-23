@@ -49,10 +49,7 @@
             
 			window.location = "clip.html"
             sessionStorage.setItem("clips", `${response["links"]}`)
-            alert(response["links"])
-            
-			//return JSON.stringify(response)
-			
+
 		})
 		.catch(error => {
 			// handle the error
