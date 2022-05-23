@@ -15,21 +15,34 @@
 <script>
     function getList()
     {   
-        let list = ["Valorant", "CSGO", "League of Legends", "Minecraft", "Apex Legends", "Call of Duty WarZone", "Among Us", "Dota 2", "World of Warcraft" ]
-        return list
+        let list = sessionStorage.getItem("categories").split(",")
+        let checkList = sessionStorage.getItem("checked").split(",")
+        return [list, checkList]
     }
 
     let list = getList()
+    let checkList = list[1]
+    list = list[0]
     document.write(`<div class="container"> <form action = "#"> <ul class="ks-cboxtags">`)
     for(let i = 0; i < list.length; i+=1)
     {
+        let cleanCategory = list[i].replace(/\s/g,'%20')
         document.write(`<li>`)
-        document.write(`<input type="checkbox" name="category" value=${list[i]} id=${list[i]}>` )
-        document.write(`<label for=${list[i]}>${list[i]}</label>`)
+        document.write(`<input type="checkbox" name="category" value=${cleanCategory} id=${cleanCategory}>` )
+        document.write(`<label for=${cleanCategory}>${list[i]}</label>`)
         document.write(`</li>`)
     }
     document.write(`<div class="container-name"><a class="example_b" id="btn"<span>Next</span></a></div>`)
     document.write(`</ul> </form> </div>`)
+
+    for (const category of checkList){
+        let cleanCategory = category.replace(/\s/g,'%20')
+        console.log(cleanCategory)
+        document.getElementById(cleanCategory).checked = true;
+    }
+
+
+
 </script>
 
 
@@ -38,7 +51,7 @@
     {
         data = {"values":values}
         var BaseIP = sessionStorage.getItem("BaseIP")
-        fetch(BaseIP+'/query', {
+        fetch(BaseIP+'/selection', {
 		method: 'POST', // or 'PUT'
 		headers: {
 			'Content-Type': 'application/json',

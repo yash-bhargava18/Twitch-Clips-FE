@@ -15,12 +15,12 @@
    
 	function newClip() {
 		//alert(sessionStorage.getItem("clips"))
-		let clips = sessionStorage.getItem("clips").split(",");
+		let clips = sessionStorage.getItem("clips").split("checked");
 		if(clips == "")
 		{
 			//alert("here")
 			data = {"values":"000000"}
-			fetch(BaseIP+'/querytwo', {
+			fetch(BaseIP+'/query', {
 			method: 'POST', // or 'PUT'
 			headers: {
 				'Content-Type': 'application/json',

@@ -76,6 +76,8 @@
 		}).then(function (json){
 			//alert(response.json())
 			sessionStorage.setItem("token", json["token"]);
+			sessionStorage.setItem("checked", json["checked"]);
+			sessionStorage.setItem("categories", json["categories"]);
 			window.location = "selection.html"
 		}).catch(function(error){
 
