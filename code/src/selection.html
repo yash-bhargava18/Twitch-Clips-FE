@@ -48,9 +48,11 @@
 
 <script>
     function postRequest(values)
-    {
-        data = {"values":values}
-        var BaseIP = sessionStorage.getItem("BaseIP")
+    {   
+        let token =  sessionStorage.getItem("token")
+        let email = sessionStorage.getItem("email")
+        let data = {"categories":values, "token": token, "email": email}
+        let BaseIP = sessionStorage.getItem("BaseIP")
         fetch(BaseIP+'/selection', {
 		method: 'POST', // or 'PUT'
 		headers: {
@@ -60,8 +62,10 @@
 		}).then(response => response.json())
 		.then(response =>{
             
+            sessionStorage.setItem("clips", response["links"])
 			window.location = "clip.html"
-            sessionStorage.setItem("clips", `${response["links"]}`)
+            
+            
 
 		})
 		.catch(error => {
@@ -85,10 +89,6 @@
 
 </script>
 
-<script>
-    document.write(`<p>${sessionStorage.getItem("token")}</p>`)
-    
-</script>
 <a href="clip.html"></a>
 
 </body>
