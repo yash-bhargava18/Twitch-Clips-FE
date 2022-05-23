@@ -8,6 +8,9 @@
 <body onload="newClip()">
 <script>
 	var BaseIP = sessionStorage.getItem("BaseIP")
+	var email = sessionStorage.getItem("email")
+	var token = sessionStorage.getItem("token")
+	
 	function logOut(){
 		sessionStorage.clear()
 		window.location = "/"
@@ -15,11 +18,12 @@
    
 	function newClip() {
 		//alert(sessionStorage.getItem("clips"))
-		let clips = sessionStorage.getItem("clips").split("checked");
+		var clips = sessionStorage.getItem("clips").split(",");
 		if(clips == "")
 		{
 			//alert("here")
-			data = {"values":"000000"}
+			
+			data = {"email":email, "token": token}
 			fetch(BaseIP+'/query', {
 			method: 'POST', // or 'PUT'
 			headers: {
