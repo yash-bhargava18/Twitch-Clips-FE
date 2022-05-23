@@ -7,7 +7,7 @@
 </head>
 <body onload="newClip()">
 <script>
-	//var clips;
+	var BaseIP = sessionStorage.getItem("BaseIP")
 	function logOut(){
 		sessionStorage.clear()
 		window.location = "/"
@@ -20,7 +20,7 @@
 		{
 			//alert("here")
 			data = {"values":"000000"}
-			fetch('http://127.0.0.1:5000/querytwo', {
+			fetch(BaseIP+'/querytwo', {
 			method: 'POST', // or 'PUT'
 			headers: {
 				'Content-Type': 'application/json',
