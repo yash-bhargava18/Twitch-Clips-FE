@@ -53,35 +53,6 @@
 		sessionStorage.setItem("BaseIP", "http://127.0.0.1:5000")		
 	}
 
-/* function signIn()
-    {
-        email = document.getElementById("EmailLogin").value
-		password = document.getElementById("PasswordLogin").value
-		//alert(email)
-
-		data = {"email": email, "password": password}
-        fetch('http://127.0.0.1:5000/signIn', {
-		method: 'POST', // or 'PUT'
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(data),
-		}).then(response => response.json())
-		.then(response =>{
-            
-			window.location = "selection.html"
-			sessionStorage.setItem("token", JSON.stringify(response["token"]));
-			alert(JSON.stringify(response))
-            
-			//return JSON.stringify(response)
-			
-		})
-		.catch(error => {
-			// handle the error
-		});
-
-    }
- */
  	startUp()
  	const signInForm = document.getElementById('signInForm')
 	var BaseIP = sessionStorage.getItem("BaseIP")
