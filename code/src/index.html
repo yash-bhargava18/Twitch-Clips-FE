@@ -14,13 +14,13 @@
 <h2>Twitch Clips - trial</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form class="form">
+		<form class="form" id="signUpForm">
 			<h1>Create Account</h1>
 			<span>Use your email for registration</span>
-			<input type="text", id="firstName" placeholder="Name" />
-			<input type="email", id="Email" placeholder="Email" />
-			<input type="password", id="password1" placeholder="Password" />
-			<button onclick="signIn()">Sign Up</button>
+			<input type="text" id="NameSignUp" 			name="NameSignUp" 		placeholder="Name" />
+			<input type="email" id="EmailSignUp" 		name="EmailSignUp"		placeholder="Email" />
+			<input type="password" id="PasswordSignUp" 	name="PasswordSignUp" 	placeholder="Password" />
+			<button type="submit">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -56,6 +56,7 @@
  	startUp()
  	const signInForm = document.getElementById('signInForm')
 	var BaseIP = sessionStorage.getItem("BaseIP")
+	
 	signInForm.addEventListener('submit', function(e) {
 		e.preventDefault();
 
@@ -65,6 +66,36 @@
 		data = {"email": email, "password": password}
 			
         fetch(BaseIP + '/signIn', {
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		}).then(function (response){
+			return response.json()
+
+		}).then(function (json){
+			//alert(response.json())
+			sessionStorage.setItem("token", json["token"]);
+			sessionStorage.setItem("checked", json["checked"]);
+			sessionStorage.setItem("categories", json["categories"]);
+			window.location = "selection.html"
+		}).catch(function(error){
+
+		})
+		
+	})
+
+	const signUpForm = document.getElementById('signUpForm')
+	signUpForm.addEventListener('submit', function(e) {
+		e.preventDefault();
+		email = document.getElementById("EmailSignUp").value
+		password = document.getElementById("PasswordSignUp").value
+		namePerson = document.getElementById("NameSignUp").value
+		sessionStorage.setItem("email",email);
+		data = {"email": email, "password": password, "name":namePerson }
+		
+        fetch(BaseIP + '/signUp', {
 			method: 'POST', // or 'PUT'
 			headers: {
 				'Content-Type': 'application/json',
