@@ -54,15 +54,15 @@
 	}
 
  	startUp()
- 	const signInForm = document.getElementById('signInForm')
-	var BaseIP = sessionStorage.getItem("BaseIP")
+ 	var BaseIP = sessionStorage.getItem("BaseIP")
 	
+	const signInForm = document.getElementById('signInForm')
 	signInForm.addEventListener('submit', function(e) {
 		e.preventDefault();
 
 		email = document.getElementById("EmailLogin").value
 		password = document.getElementById("PasswordLogin").value
-
+		sessionStorage.setItem("email",email);
 		data = {"email": email, "password": password}
 			
         fetch(BaseIP + '/signIn', {
