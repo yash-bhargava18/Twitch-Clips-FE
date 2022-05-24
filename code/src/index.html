@@ -50,7 +50,7 @@
 <script>
 	function startUp()
 	{
-		sessionStorage.setItem("BaseIP", "http://127.0.0.1:5000")		
+		sessionStorage.setItem("BaseIP", "http://127.0.0.1:5001")		
 	}
 
  	startUp()
@@ -75,11 +75,17 @@
 			return response.json()
 
 		}).then(function (json){
-			//alert(response.json())
-			sessionStorage.setItem("token", json["token"]);
-			sessionStorage.setItem("checked", json["checked"]);
-			sessionStorage.setItem("categories", json["categories"]);
-			window.location = "selection.html"
+			if (json["token"] == "False")
+			{
+				alert("Email or Password is Incorrect!")
+			}
+			else
+			{
+				sessionStorage.setItem("token", json["token"]);
+				sessionStorage.setItem("checked", json["checked"]);
+				sessionStorage.setItem("categories", json["categories"]);
+				window.location = "selection.html"
+			}
 		}).catch(function(error){
 
 		})
@@ -106,10 +112,18 @@
 
 		}).then(function (json){
 			//alert(response.json())
-			sessionStorage.setItem("token", json["token"]);
-			sessionStorage.setItem("checked", json["checked"]);
-			sessionStorage.setItem("categories", json["categories"]);
-			window.location = "selection.html"
+			if (json["token"] == "False")
+			{
+				alert("User already Exists!")
+			}
+			else
+			{
+				sessionStorage.setItem("token", json["token"]);
+				sessionStorage.setItem("checked", json["checked"]);
+				sessionStorage.setItem("categories", json["categories"]);
+				window.location = "selection.html"
+			}
+
 		}).catch(function(error){
 
 		})
