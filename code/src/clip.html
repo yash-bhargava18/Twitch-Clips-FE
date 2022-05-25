@@ -34,7 +34,7 @@
 			.then(response =>{
 				
 				clips = response["links"].split(",")
-				let new_clip = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
+				let new_clip = clips.pop()+"&parent=clipz.ml&autoplay=true&muted=false";
 				document.getElementById('myIframe').src = new_clip;
 				sessionStorage.setItem("clips", clips.join(","))
 			})
@@ -43,7 +43,7 @@
 			});
 		}
 		else{
-			let new_clip = clips.pop()+"&parent=localhost&autoplay=true&muted=false";
+			let new_clip = clips.pop()+"&parent=clipz.ml&autoplay=true&muted=false";
 			document.getElementById('myIframe').src = new_clip;
 			sessionStorage.setItem("clips", clips.join(","))
 		}
