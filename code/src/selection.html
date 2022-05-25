@@ -79,7 +79,8 @@
         let checkboxes = document.querySelectorAll('input[name="category"]:checked');
         let values = [];
         checkboxes.forEach((checkbox) => {
-            values.push(checkbox.value);
+            let cleanCategory = checkbox.value.replace('%20',' ')
+            values.push(cleanCategory);
         });
         postRequest(values);
         
